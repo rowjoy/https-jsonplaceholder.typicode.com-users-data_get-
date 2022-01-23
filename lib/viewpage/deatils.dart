@@ -3,7 +3,25 @@
 import 'package:flutter/material.dart';
 
 class Deatilespage extends StatefulWidget {
-  const Deatilespage({Key? key}) : super(key: key);
+  final String? name;
+  final String? username;
+  final String? email;
+  final String? address;
+  final String? city;
+  final String? phone;
+  final String? website;
+  final String? company;
+  const Deatilespage(
+      {Key? key,
+      this.name,
+      this.username,
+      this.address,
+      this.city,
+      this.company,
+      this.email,
+      this.phone,
+      this.website})
+      : super(key: key);
 
   @override
   _DeatilespageState createState() => _DeatilespageState();
@@ -25,16 +43,39 @@ class _DeatilespageState extends State<Deatilespage> {
                 child: Column(
                   // ignore: prefer_const_literals_to_create_immutables
                   children: [
-                    CircleAvatar(
-                      radius: 50,
-                      child: Center(
-                        child: Icon(
-                          Icons.person,
-                          size: 40,
-                          color: Colors.white,
-                        ),
+                    Container(
+                      child: Row(
+                        // ignore: prefer_const_literals_to_create_immutables
+                        children: [
+                          Container(
+                            child: GestureDetector(
+                                onTap: () {
+                                  Navigator.pop(context);
+                                },
+                                child: Icon(Icons.arrow_back)),
+                          ),
+                          SizedBox(
+                            width: 85,
+                          ),
+                          CircleAvatar(
+                            radius: 50,
+                            child: Center(
+                              child: Icon(
+                                Icons.person,
+                                size: 40,
+                                color: Colors.white,
+                              ),
+                            ),
+                          ),
+                        ],
                       ),
-                    )
+                    ),
+                    Text('${widget.name}'),
+                    Text('${widget.email}'),
+                    Text('${widget.address}'),
+                    Text('${widget.phone}'),
+                    Text('${widget.city}'),
+                    Text('${widget.company}'),
                   ],
                 ),
               ),

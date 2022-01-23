@@ -22,8 +22,10 @@ class _UserpageState extends State<Userpage> {
         title: Text('User info'),
       ),
       body: RefreshIndicator(
+        color: Colors.blue,
+        backgroundColor: Colors.white.withOpacity(0),
         onRefresh: () async {
-          context.read<Userdata>().getdata;
+          await context.read<Userdata>().getdata;
         },
         child: SafeArea(
           child: Container(child: Consumer<Userdata>(
@@ -73,7 +75,26 @@ class _UserpageState extends State<Userpage> {
                                           context,
                                           MaterialPageRoute(
                                               builder: (context) =>
-                                                  Deatilespage()));
+                                                  Deatilespage(
+                                                    name: value.datalist[index]
+                                                        ['name'],
+                                                    email: value.datalist[index]
+                                                        ['email'],
+                                                    address: value
+                                                            .datalist[index]
+                                                        ['address']['street'],
+                                                    city: value.datalist[index]
+                                                        ['address']['city'],
+                                                    phone: value.datalist[index]
+                                                        ['phone'],
+                                                    website:
+                                                        value.datalist[index]
+                                                            ['website'],
+                                                    company:
+                                                        value.datalist[index]
+                                                                ['company']
+                                                            ['catchPhrase'],
+                                                  )));
                                     },
                                     icon: Icon(
                                       Icons.view_agenda,
