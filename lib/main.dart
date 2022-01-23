@@ -1,7 +1,9 @@
 // ignore_for_file: prefer_const_constructors
-
 import 'package:api_provider_user_data/viewpage/user.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+
+import 'providersection/usercontroller.dart';
 
 void main() {
   runApp(const MyApp());
@@ -19,7 +21,12 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: Userpage(),
+      home: MultiProvider(
+        providers: [
+          ChangeNotifierProvider(create: (context) => Userdata()),
+        ],
+        child: Userpage(),
+      ),
     );
   }
 }
